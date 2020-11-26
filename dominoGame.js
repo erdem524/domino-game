@@ -21,27 +21,18 @@ console.log(getRandomTile(stock));
 //   push random tile to desktop
 desktop.unshift(getRandomTile(stock));
 console.log(desktop);
-
+//   push 7 random tile to players
 const pickTiles = (player) => {
   for (let i = 0; i < 7; i++) {
     player.push(getRandomTile(stock));
   }
 };
-console.log(desktop);
 pickTiles(player1);
 pickTiles(player2);
-
-console.log(desktop);
-console.log(player1);
-console.log(player2);
-console.log(stock.length);
-desktop.push(getRandomTile(stock));
-console.log(desktop);
 const deskB = desktop[0][0];
 const deskE = desktop[desktop.length - 1][1];
 
-console.log(player1.length);
-
+//filters matched tiles then returns a valid tile
 const checkFit = (player) => {
   const canFit = player
     .filter(
@@ -50,8 +41,8 @@ const checkFit = (player) => {
     .find((el) => el);
   return canFit;
 };
-console.log(checkFit(player1));
 
+// push/unshift  valid tile to desktop
 const checkPlayer = (desk, player) => {
   if (checkFit(player)) {
     console.log(`Player A plays < ${checkFit(player)} > `);
@@ -83,7 +74,7 @@ const checkPlayer = (desk, player) => {
   }
 };
 
-isGameOver();
+// switch players turn
 const turn = (player) => {
   let success;
   do {
@@ -109,6 +100,8 @@ function isGameOver() {
     return false;
   }
 }
+isGameOver();
+
 let currentPlayer = 1;
 
 do {
