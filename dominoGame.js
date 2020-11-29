@@ -18,9 +18,7 @@ const getRandomTile = (arr) => {
   return randomTile;
 };
 console.log(getRandomTile(stock));
-//   push random tile to desktop
-desktop.unshift(getRandomTile(stock));
-console.log(desktop);
+
 //   push 7 random tile to players
 const pickTiles = (player) => {
   for (let i = 0; i < 7; i++) {
@@ -29,6 +27,10 @@ const pickTiles = (player) => {
 };
 pickTiles(player1);
 pickTiles(player2);
+//   push random tile to desktop
+desktop.unshift(getRandomTile(player1));
+console.log(desktop);
+
 const deskB = desktop[0][0];
 const deskE = desktop[desktop.length - 1][1];
 
@@ -83,21 +85,24 @@ const turn = (player) => {
 };
 
 function isGameOver() {
-  if (player1.length === 0 || player2.length === 0) {
-    if (player1.length > player2.length) {
-      console.log("player2 Wins");
-    } else {
-      console.log("player1 Wins");
-    }
-    console.log(player1);
-    console.log(player2);
-    console.log(stock);
-    console.log(desktop);
-    console.log("Game Over");
-
-    return true;
+  if (stock.length === 0) {
+    console.log(`No tiles available in the stock, opponent wins`);
   } else {
-    return false;
+    if (player1.length === 0 || player2.length === 0) {
+      if (player1.length > player2.length) {
+        console.log("player2 Wins");
+      } else {
+        console.log("player1 Wins");
+      }
+      console.log(player1);
+      console.log(player2);
+      console.log(stock);
+      console.log(desktop);
+      console.log("Game Over");
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 isGameOver();
