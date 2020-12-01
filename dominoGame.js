@@ -43,7 +43,6 @@ const checkFit = (player) => {
     .find((el) => el);
   return canFit;
 };
-
 // push/unshift  valid tile to desktop
 const checkPlayer = (desk, player) => {
   if (checkFit(player)) {
@@ -57,16 +56,16 @@ const checkPlayer = (desk, player) => {
       player.splice(checkFit(player), 1);
     } else if (n1 == deskB) {
       desktop.unshift(checkFit(player));
-      console.log(console.log(`Player A plays < ${checkFit(player)} > `));
+      console.log(`Player A plays < ${checkFit(player)} > `);
       player.splice(checkFit(player), 1);
     } else if (n0 == deskE) {
       desktop.push(checkFit(player));
-      console.log(console.log(`Player A plays < ${checkFit(player)} > `));
+      console.log(`Player A plays < ${checkFit(player)} > `);
       player.splice(checkFit(player), 1);
     } else if (n1 == deskE) {
       console.log(checkFit(player));
       desktop.push(checkFit(player).reverse());
-      console.log(console.log(`Player A plays < ${checkFit(player)} > `));
+      console.log(`Player A plays < ${checkFit(player)} > `);
     }
 
     return true;
